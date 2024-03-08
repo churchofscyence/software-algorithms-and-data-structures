@@ -6,7 +6,7 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'software-learning-algorithms';
+  title = 'Data Structures and Algorithms';
 
   /** Template reference to the canvas element */
   @ViewChild('canvasEl') canvasEl!: ElementRef;

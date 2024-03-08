@@ -30,16 +30,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'software-learning-algorithms'`, () => {
+  it('should have as title "Data Structures and Algorithms"', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('software-learning-algorithms');
+    expect(app.title).toEqual('Data Structures and Algorithms');
   });
 
-  it('should render title', () => {
+  it('should render title as "Data Structures and Algorithms"', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('software-learning-algorithms app is running!');
+    expect(compiled.querySelector('.title')?.textContent).toContain('Data Structures and Algorithms');
   });
 });
