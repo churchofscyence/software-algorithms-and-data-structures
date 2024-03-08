@@ -1,8 +1,6 @@
-.content{
-  margin: 40px;
-}
 
 .title{
+  margin-top: 40px;
   text-align: center;
   font-size: 40px;
   color:#F03A25;
@@ -11,4 +9,16 @@
 
 .below-spacer{
   margin-bottom: 40px;
+}
+
+footer{
+  height: 40px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Copperplate', cursive;
+}
+
+.footer{
+  background-color: orangered;
 }
