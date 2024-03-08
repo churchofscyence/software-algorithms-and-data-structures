@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { CanvasModel } from './models/CanvasModel';
 
 @Component({
   selector: 'app-root',
