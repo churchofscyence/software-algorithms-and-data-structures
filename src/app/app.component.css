@@ -1,7 +1,36 @@
-.content{
-  margin: 40px;
+
+.title{
+  margin-top: 40px;
+  text-align: center;
+  font-size: 40px;
+  color:#F03A25;
+  font-family: 'Copperplate', cursive;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+.below-spacer{
+  margin-bottom: 40px;
+}
+
+.action-label{
+  margin-top: 10px;
+  text-align: left;
+  font-size: 20px;
+  color:#F03A25;
+  font-family: 'Copperplate', cursive;
+}
+
+.actions{
+  margin: 5px;
+}
+
+footer{
+  height: 40px;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Copperplate', cursive;
+}
+
+.footer{
+  background-color: orangered;
 }
