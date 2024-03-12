@@ -11,6 +11,18 @@
   margin-bottom: 40px;
 }
 
+.action-label{
+  margin-top: 10px;
+  text-align: left;
+  font-size: 20px;
+  color:#F03A25;
+  font-family: 'Copperplate', cursive;
+}
+
+.actions{
+  margin: 5px;
+}
+
 footer{
   height: 40px;
   margin-top: 40px;

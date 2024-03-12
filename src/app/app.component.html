@@ -7,21 +7,28 @@
   <div class="center below-spacer">
     <mat-toolbar color="primary">
 
-      <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+      <button mat-button [matMenuTriggerFor]="belowMenu">Search</button>
       <mat-menu #belowMenu="matMenu" yPosition="below">
-        <button mat-menu-item (click)="onNavigate( 'Below Item 1' )" >Item 1</button>
+        <button mat-menu-item (click)="onNavigate( Algorithm.SEARCH_BINARY_POINT )" > {{ Algorithm.SEARCH_BINARY_POINT }} </button>
       </mat-menu>
 
     </mat-toolbar>
   </div>
+  <p class="title" >{{ currentAlgorithm }}</p>
+  <div>
 
-  <div class="below-spacer" style="margin-left: 20px;">
-    <canvas #canvasEl  width="1600" height="600" style="border: 3px solid #3f51b5;"></canvas>
   </div>
 
+  <section style="margin: 20px;">
+    <div class="action-label">Actions</div>
+    <div class="action-button-row">
+      <button class="actions" mat-raised-button color="primary" (click)="onClear()">Clear</button>
+      <button class="actions" mat-raised-button color="primary" (click)="onNext()">Next</button>
+    </div>
+  </section>
 
-  <div class="center below-spacer" style="margin-left: 20px;" >
-    <button type="button" class="btn btn-info" (click)="onNext()" >Next</button>
+  <div class="below-spacer" style="margin-left: 20px;">
+    <canvas #canvasEl  class="canvas" width="1600" height="1600" style="border: 3px solid #3f51b5;"></canvas>
   </div>
 
   <footer class="footer">
