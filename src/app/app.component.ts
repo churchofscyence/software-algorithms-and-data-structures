@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
+import {FormControl, FormGroup} from "@angular/forms";
+
 import { AlgorithmEnum } from './enumerates/algorithm.enum';
 import {InitializeEnum} from './enumerates/initialize.enum';
 import {GraphModel} from './models/graph.model';
@@ -13,6 +15,11 @@ import { AlgorithmService } from './services/algorithm.service';
 export class AppComponent {
   title = 'Data Structures and Algorithms';
   currentAlgorithm = "Algorithm";
+
+
+  /** Form Input Values **/
+  arrayList:string = "";
+  targetValue:string = "";
 
   /** Template reference to the canvas element */
   @ViewChild('canvasEl') canvasEl!: ElementRef;
@@ -62,9 +69,13 @@ export class AppComponent {
         case InitializeEnum.MANY_HORIZONTAL_RECTANGLE:
           // @ts-ignore
           let element = this.contextData['element'];
+          this.arrayList = element.join();
+          // @ts-ignore
+          this.targetValue = this.contextData['target'];
+
           // @ts-ignore
           let setupValues = this.contextData['setupValues'];
-          //drawManyHorizontalRec(50, 50, [1, 2, 3, 4, 5], 100, 50, "blue");
+          //drawManyHorizontalRec(50, 50, [9, 8, 2, 4, 1], 100, 100, "red");
           this.graphModel.drawManyHorizontalRec(setupValues[index].x,
                                                 setupValues[index].y,
                                                 element,
@@ -82,7 +93,20 @@ export class AppComponent {
 
 
   onNext(){
-    alert("Next button was clicked!");
+    console.log("Next button was clicked!");
+
+    switch(this.currentAlgorithm){
+      case AlgorithmEnum.SEARCH_BINARY_POINT:
+        this.graphModel.drawManyHorizontalPointer([2, 4], ["Pointer 1", "Pointer 2"]);
+        break;
+      default:
+      // code block
+    }
+
+
+
+
+
   };
 
 

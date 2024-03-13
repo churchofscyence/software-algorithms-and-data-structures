@@ -19,8 +19,19 @@
 
   </div>
 
+  <form class="form">
+    <mat-form-field class="full-width">
+      <mat-label>Array List</mat-label>
+      <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}" >
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Target Value</mat-label>
+      <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </form>
+
   <section style="margin: 20px;">
-    <div class="action-label">Actions</div>
     <div class="action-button-row">
       <button class="actions" mat-raised-button color="primary" (click)="onClear()">Clear</button>
       <button class="actions" mat-raised-button color="primary" (click)="onNext()">Next</button>
