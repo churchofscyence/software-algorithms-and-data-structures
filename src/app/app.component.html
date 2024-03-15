@@ -22,7 +22,7 @@
   <form class="form">
     <mat-form-field class="full-width">
       <mat-label>Array List</mat-label>
-      <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}" >
+      <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}"  >
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -30,6 +30,10 @@
       <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
   </form>
+
+  <div [ngClass]="messageType" role="alert">
+    {{ message }}
+  </div>
 
   <section style="margin: 20px;">
     <div class="action-button-row">

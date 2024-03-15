@@ -12,6 +12,15 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
 
 describe('AppComponent', () => {
+
+  let fixture:any;
+  let app:any;
+
+  let compiled:any;
+
+  let value;
+  let expected;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -28,24 +37,59 @@ describe('AppComponent', () => {
         MatInputModule
         ]
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+
+    fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
+
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it('should have as title "Data Structures and Algorithms"', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
     expect(app.title).toEqual('Data Structures and Algorithms');
   });
 
   it('should render title as "Data Structures and Algorithms"', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.title')?.textContent).toContain('Data Structures and Algorithms');
   });
+
+  it('should convert a string of comma-separated numbers into an array of numbers when given a valid input', () => {
+    // Arrange
+    value = "1,2,3,4,5";
+    expected = [1, 2, 3, 4, 5];
+
+    // Act
+    const result = app.convertToNumberArray(value);
+
+    // Assert
+    expect(result).toEqual(expected);
+  });
+
+  it('should return an empty array when given a non-string input', () => {
+    // Arrange
+    value = 123;
+
+    // Act
+    const result = app.convertToNumberArray(value);
+
+    // Assert
+    expect(result).toEqual([]);
+  });
+
+  it('should return an empty array when given a value missing a trailing digit', () => {
+    // Arrange
+    value = '12,';
+
+    // Act
+    const result = app.convertToNumberArray(value);
+
+    // Assert
+    expect(result).toEqual([]);
+  });
+
 });
