@@ -22,12 +22,12 @@
   <form class="form">
     <mat-form-field class="full-width">
       <mat-label>Array List</mat-label>
-      <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}"  >
+      <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}" (focusout)="arrayListFocusout()">
     </mat-form-field>
 
     <mat-form-field class="full-width">
       <mat-label>Target Value</mat-label>
-      <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}">
+      <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}" (focusout)="targetValueFocusout()">
     </mat-form-field>
   </form>
 
@@ -41,6 +41,10 @@
       <button class="actions" mat-raised-button color="primary" (click)="onNext()">Next</button>
     </div>
   </section>
+
+  <div>
+    <p><span class="pageText">Total number times the Next Button was clicked: </span><span class="pageTextInfo"> {{ numNext }}</span></p>
+  </div>
 
   <div class="below-spacer" style="margin-left: 20px;">
     <canvas #canvasEl  class="canvas" width="1600" height="1600" style="border: 3px solid #3f51b5;"></canvas>

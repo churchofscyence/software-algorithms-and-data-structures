@@ -5,6 +5,8 @@ import {InitializeEnum} from './enumerates/initialize.enum';
 import {GraphModel} from './models/graph.model';
 import { AlgorithmService } from './services/algorithm.service';
 
+import { BinarySearch } from './searches/binary.search';
+
 type AlgorithmData = {
   element: number[],
   target: number,
@@ -35,6 +37,7 @@ export class AppComponent {
   messageType:string = "";
 
   algorithmData! : AlgorithmData;
+  binarySearch! : BinarySearch;
 
   /** Template reference to the canvas element */
   @ViewChild('canvasEl') canvasEl!: ElementRef;
@@ -47,6 +50,11 @@ export class AppComponent {
   Algorithm = AlgorithmEnum;
   algorithmService : AlgorithmService = new AlgorithmService();
 
+  /*
+   * Each time the Next Button is clicked, this number is incremented
+   */
+  numNext:number = 0;
+
   constructor () {
   }
 
@@ -54,6 +62,8 @@ export class AppComponent {
 
     this.canvas = (this.canvasEl.nativeElement as HTMLCanvasElement);
     this.context = this.canvas.getContext('2d');
+
+    this.binarySearch = new BinarySearch()
 
   };
 
@@ -67,8 +77,6 @@ export class AppComponent {
       console.log("[" + index + "] " + element);
       switch(element){
         case InitializeEnum.MANY_HORIZONTAL_RECTANGLE:
-
-
 
           //drawManyHorizontalRec(50, 50, [9, 8, 2, 4, 1], 100, 100, "red");
           this.graphModel.drawManyHorizontalRec(
@@ -127,6 +135,7 @@ export class AppComponent {
     this.arrayList = "";
     this.targetValue = "";
     this.currentAlgorithm = "Algorithm";
+    this.numNext  = 0;
   };
 
   onNavigate( item: string){
@@ -146,6 +155,7 @@ export class AppComponent {
   onNext(){
     console.log("Next button was clicked!");
 
+
     this.clear();
 
     if( !this.onMessage() ){
@@ -153,13 +163,21 @@ export class AppComponent {
 
       switch(this.currentAlgorithm){
         case AlgorithmEnum.SEARCH_BINARY_POINT:
-          this.graphModel.drawManyHorizontalPointer([2, 4], ["Pointer 1", "Pointer 2"]);
+
+          let result = this.binarySearch.pointer(this.numNext,this.algorithmData.element, this.algorithmData.target)
+          if(result.length == 1 ){
+            this.messageType = 'alert alert-success';
+            this.message = "Target Value found at index " + result[0];
+          }else{
+            this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"]);
+          }
           break;
         default:
         // code block
       }
     }
 
+    this.numNext++;
 
   };
 
@@ -195,7 +213,16 @@ export class AppComponent {
 
   };
 
+  arrayListFocusout(){
+    console.log("ArrayList was focusout!");
+    //alert("ArrayList was focusout!");
+  };
 
+  targetValueFocusout() {
+    console.log("Target Value was focusout!");
+    //alert("Target Value was focusout!");
+
+  };
 
 
 }

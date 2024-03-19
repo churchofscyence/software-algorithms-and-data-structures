@@ -34,11 +34,17 @@
   width: 100%;
 }
 
-footer{
-  height: 40px;
-  margin-top: 40px;
-  text-align: center;
-  font-size: 18px;
+.pageText{
+  margin-left: 10px;
+  font-size: 20px;
+  color:#F03A25;
+  font-family: 'Copperplate', cursive;
+}
+
+.pageTextInfo{
+  margin-left: 10px;
+  font-size: 30px;
+  color:#3f51b5;
   font-family: 'Copperplate', cursive;
 }
 
