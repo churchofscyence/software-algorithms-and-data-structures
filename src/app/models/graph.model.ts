@@ -2,7 +2,7 @@ import { CanvasModel } from './canvas.model';
 
 export class GraphModel extends CanvasModel {
 
-  private _colors: string[] = ["red", "purple", "orange", "green", "blue", "black", "yellow","brown"];
+  private _colors: string[] = ["red", "purple", "orange", "green", "blue", "black","brown"];
 
   private _xRec:number = 0;
   private _yRec:number = 0;

@@ -326,6 +326,34 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+# Testing
+[Code coverage for angular 2](https://stackoverflow.com/questions/44463706/code-coverage-for-angular-2)
+
+## Overall Test Coverage
+If you want to see overall test coverage statistics than of course in Angular CLI you can just type, and see the bottom of your command prompt window
+
+```
+$ ng test --code-coverage
+```
+
+## Component's Individual Coverage
+if you want to see component's individual coverage of tests follow these steps.
+
+```
+$ npm install --save-dev karma-teamcity-reporter
+```
+
+Add require('karma-teamcity-reporter') to list of plugins in karma.conf.js
+
+```
+$ ng test --code-coverage --reporters=teamcity,coverage-istanbul
+```
+
+note that list of reporters is comma-separated, as we have added a new reporter, teamcity.
+
+after running this command you can see the folder coverage in your dir and open index.html for a graphical view of test coverage.
+
+
 # Errors
 ## TS7053
 
