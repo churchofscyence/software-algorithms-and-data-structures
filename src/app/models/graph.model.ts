@@ -127,10 +127,11 @@ export class GraphModel extends CanvasModel {
  */
 
 
-  drawHorizontalPointer(index:number,color:string,label?:string){
+  drawHorizontalPointer(index:number,color:string, offset:number, label?:string, ){
 
       let x = this._xRec + this._widthRec;
       let y = this._yRec + (index * this._heightRec) + (this._heightRec/2);
+
 
       // the triangle
       if(this._context != null){
@@ -156,7 +157,7 @@ export class GraphModel extends CanvasModel {
         //Label
           if(typeof label !== "undefined"){
             this._context.font = "30px Arial";
-            this._context.fillText(label, x + 160 , y);
+            this._context.fillText(label, x + 160 + offset , y);
           }
     }
 
@@ -194,10 +195,10 @@ export class GraphModel extends CanvasModel {
 
 */
 
-  drawManyHorizontalPointer (index:number[], label:string[]){
+  drawManyHorizontalPointer (index:number[], label:string[], offset:number[]) {
     for(let i = 0; i < index.length; i++){
 
-      this.drawHorizontalPointer(index[i], this.getRandomColor(), label[i]);
+      this.drawHorizontalPointer(index[i], this.getRandomColor(), offset[i] ,label[i],  );
     }
   };
 

@@ -11,7 +11,8 @@ module.exports = function(config) {
 
     plugins: [
       require('karma-jasmine'),
-      require('karma-chrome-launcher'),
+      //require('karma-chrome-launcher'),
+      require("karma-firefox-launcher"),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
@@ -58,7 +59,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://www.npmjs.com/search?q=keywords:karma-launcher
-    browsers: ['Chrome'],
+    browsers: [
+      //'Chrome',
+      "Firefox"
+      //"FirefoxDeveloper"
+    ],
 
 
     // Continuous Integration mode

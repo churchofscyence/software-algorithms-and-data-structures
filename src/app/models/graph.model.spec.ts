@@ -148,7 +148,7 @@ describe('GraphModel', () => {
     // @ts-ignore
     spyOn(context, "fillText");
 
-    graphModel.drawHorizontalPointer(2, 'red', 'Pointer');
+    graphModel.drawHorizontalPointer(2, 'red', 0,'Pointer');
 
     if(context != null){
       // Assertions
