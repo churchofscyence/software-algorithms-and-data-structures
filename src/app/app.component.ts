@@ -169,7 +169,7 @@ export class AppComponent {
             this.messageType = 'alert alert-success';
             this.message = "Target Value found at index " + result[0];
           }else{
-            this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"]);
+            this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
           }
           break;
         default:

@@ -2,8 +2,13 @@ import { TestBed } from '@angular/core/testing';
 import { BinarySearch } from "./binary.search";
 
 describe('BinarySearch', () => {
+ /*
+  * The stepCount is number of the iteration in the Binary Search.
+  */
 
   let binarySearch:BinarySearch;
+  let element:number[];
+  let target:number;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -11,6 +16,8 @@ describe('BinarySearch', () => {
     }).compileComponents();
 
     binarySearch = new BinarySearch();
+    element = [2,3,4,10,40];
+
 
   });
 
@@ -18,24 +25,14 @@ describe('BinarySearch', () => {
     expect(binarySearch).not.toBeNull();
   });
 
-  it('should be true because Header = 0,Middle = 2,Tail = 4', () => {
+  it('should be true because the target (4) and stepCount (0) is found and the result is index Middle = 2', () => {
 
-    let element = [9, 8, 2, 4, 1];
-
-    let result = binarySearch.pointer(0,element,8);
-
-    expect(result).toEqual([0, 2, 4]);
-
-  });
-
-  it('should be true because the target is found at index 2', () => {
-
-    let element = [9, 8, 2, 4, 1];
-
-    let result = binarySearch.pointer(0,element,2);
+    target = 4;
+    let result = binarySearch.pointer(0,element,target);
 
     expect(result).toEqual([2]);
 
   });
+
 
 });

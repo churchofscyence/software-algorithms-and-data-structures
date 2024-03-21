@@ -12,8 +12,8 @@ export class AlgorithmService {
 
   constructor() {
     this._context.set(AlgorithmEnum.SEARCH_BINARY_POINT, {
-      element: [9, 8, 2, 4, 1],
-      target: 8,
+      element: [2,3,4,10,40],
+      target: 40,
       setupType:[InitializeEnum.MANY_HORIZONTAL_RECTANGLE],
       setupValues:[{
         x: 50,
