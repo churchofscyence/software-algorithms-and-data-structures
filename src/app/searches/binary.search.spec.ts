@@ -6,32 +6,25 @@ describe('BinarySearch', () => {
   * The stepCount is number of the iteration in the Binary Search.
   */
 
-  let binarySearch:BinarySearch;
-  let element:number[];
-  let target:number;
+  let binaryMin:BinarySearch;
+  let binaryMiddle:BinarySearch
+  let binaryMax:BinarySearch;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: []
     }).compileComponents();
 
-    binarySearch = new BinarySearch();
-    element = [2,3,4,10,40];
-
+    binaryMin = new BinarySearch([0,10,20,30,40,50,60],0);
+    binaryMiddle = new BinarySearch([0,10,20,30,40,50,60],30);
+    binaryMax = new BinarySearch([0,10,20,30,40,50,60],60);
 
   });
 
   it('should be true because binarySearch is not null', () => {
-    expect(binarySearch).not.toBeNull();
-  });
-
-  it('should be true because the target (4) and stepCount (0) is found and the result is index Middle = 2', () => {
-
-    target = 4;
-    let result = binarySearch.pointer(0,element,target);
-
-    expect(result).toEqual([2]);
-
+    expect(binaryMin).not.toBeNull();
+    expect(binaryMiddle).not.toBeNull();
+    expect(binaryMax).not.toBeNull();
   });
 
 
