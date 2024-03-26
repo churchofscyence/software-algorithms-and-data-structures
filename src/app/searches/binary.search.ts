@@ -1,5 +1,4 @@
 export class BinarySearch {
-
   //POINTERS
   private _head:number = 0;
   private _middle:number = 0;
@@ -33,13 +32,20 @@ export class BinarySearch {
     this._stepCount = stepCount;
 
     if(stepCount === 0){
-        this._head = 0;
-        this._tail =  this._element.length - 1;
-        this._middle = this.calculateMiddle(this._head,this._tail);
-    }else if(stepCount >this._element.length/2){
-      //How iterations to find the middle?
-      return [];//TODO: Fix where the middle is not found
-    }else{
+      this._head = 0;
+      this._tail =  this._element.length - 1;
+    }
+    this._middle = this.calculateMiddle(this._head,this._tail);
+
+    if(stepCount > 0){
+
+      if(this._element [this._middle] > this._target){
+        this._head = this._middle - 1;
+      }
+
+      if(this._element [this._middle]  < this._target){
+        this._head = this._middle + 1;
+      }
 
     }
 
@@ -65,5 +71,4 @@ export class BinarySearch {
 
   get stepCount(): number|undefined {return this._stepCount;}
   set stepCount(value: number|undefined) {this._stepCount = value;}
-
 }

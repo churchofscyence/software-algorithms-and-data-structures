@@ -59,12 +59,8 @@ export class AppComponent {
   }
 
   ngAfterViewInit() {
-
     this.canvas = (this.canvasEl.nativeElement as HTMLCanvasElement);
     this.context = this.canvas.getContext('2d');
-
-    this.binarySearch = new BinarySearch()
-
   };
 
   initializeCanvas(){
@@ -155,8 +151,9 @@ export class AppComponent {
   onNext(){
     console.log("Next button was clicked!");
 
-
     this.clear();
+
+    this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
 
     if( !this.onMessage() ){
       this.initializeCanvas();
@@ -164,7 +161,7 @@ export class AppComponent {
       switch(this.currentAlgorithm){
         case AlgorithmEnum.SEARCH_BINARY_POINT:
 
-          let result = this.binarySearch.pointer(this.numNext,this.algorithmData.element, this.algorithmData.target)
+          let result = this.binarySearch.pointer(this.numNext)
           if(result.length == 1 ){
             this.messageType = 'alert alert-success';
             this.message = "Target Value found at index " + result[0];
