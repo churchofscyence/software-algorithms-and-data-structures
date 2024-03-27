@@ -154,32 +154,32 @@ O(n&sup3;)
 ### Objects
 * An object is a collection of key and value pairs
 
-Insert item - O(1)
-Remove item - O(1)
-Access items - O(1)
-Search items - O(n) is Linear because might have search all elements
-Object.keys() - O(n)
-Object.values() - O(n)
-Object.entries() - O(n)
+Insert item - O(1)    
+Remove item - O(1)     
+Access items - O(1)     
+Search items - O(n) is Linear because might have search all elements      
+Object.keys() - O(n)    
+Object.values() - O(n)    
+Object.entries() - O(n)          
 
 ### Arrays
 * An array is an ordered collection of values
 
-Insert/remove at end - O(1)
-Insert/remove at beginning - O(n)
-Access - O(1)
-Search - O(n)
-Push/pop - O(1)
-Shift/unshift/concat/slice/splice - O(n)
-forEach/map/filter/reduce - O(n)
+Insert/remove at end - O(1)    
+Insert/remove at beginning - O(n)    
+Access - O(1)    
+Search - O(n)    
+Push/pop - O(1)     
+Shift/unshift/concat/slice/splice - O(n)     
+forEach/map/filter/reduce - O(n)         
 
 ## Big-O Guide Cheatsheet
  __________________________________________________
 Calculation not dependent in input size - O(1)
 
-1 loop - O(n)
-2 nested loops - O(n^2)
-Input size reduced by half - O(log n)
+1 loop - O(n)    
+2 nested loops - O(n^2)     
+Input size reduced by half - O(log n)       
 
 # Math Algorithms
 * Fibonacci Sequence
@@ -297,6 +297,7 @@ Divide the search space into two halves by finding the middle index “mid”.
 * [Data Structures and Algorithms in Java | Free course | Animations and Implementations - Dinesh Varyani - YouTube](https://www.youtube.com/watch?v=6iCHf7OZn6c&list=PL6Zs6LgrJj3tDXv8a_elC6eT_4R5gfX4d)
 * [Analysis of Algorithms | Big-O analysis - geeksforgeeks.org](https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/)
 * [JavaScript - draw triangle on canvas element](https://dirask.com/posts/JavaScript-draw-triangle-on-canvas-element-1yKd5p)
+* [Big (O) Notation Explanation - javachallengers.com](https://javachallengers.com/big-o-notation-explanation/#:~:text=The%20Big(O)%20Notation%20is,computer%20resources%20an%20algorithm%20uses.)
 
 
 # Angular 

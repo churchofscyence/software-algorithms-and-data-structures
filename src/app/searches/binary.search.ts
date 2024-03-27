@@ -1,39 +1,85 @@
+import { BinarySearchDisplay } from "../displays/binary.search.display";
+
 export class BinarySearch {
+  //POINTERS
+  private _head:number = 0;
+  private _middle:number = 0;
+  private _tail:number = 0;
 
-  private _pointerHeader:number = 0;
-  private _pointerMiddle:number = 0;
-  private _pointerTail:number = 0;
+  private _element:number[];
+  private _target:number;
 
-  constructor() {
+  private _binarySearchDisplay:BinarySearchDisplay = new BinarySearchDisplay();
+
+  private _stepCount?:number;
+
+  constructor(element:number[],target:number) {
+    this._element = element;
+    this._target = target;
   }
 
-
-
-  pointer(stepCount:number,element:number[],target:number):number[] {
-
-      if(stepCount === 0){
-        this._pointerHeader = 0;
-        this._pointerTail =  element.length - 1;
-      }
-
-      this._pointerMiddle = this._pointerHeader + Math.floor(( this._pointerTail - this._pointerHeader) / 2);
-
-
-      //Check if the target is found if the element is in the array
-      if (element[this._pointerMiddle] === target){
-        return [this._pointerMiddle];
-      }else{
-        return [this._pointerHeader, this._pointerMiddle, this._pointerTail];
-      }
+  calculateMiddle(head:number,tail:number,){
+    return head + Math.floor(( tail - head) / 2);
   }
 
+  checkMiddle():number[]{
 
-  get pointerHeader(): number {return this._pointerHeader;}
-  set pointerHeader(value: number) {this._pointerHeader = value;}
+    if(this._target !== this._element[this._middle] && this._head === this._tail){
+      return [];
+    }
+    if(this._target === this._element[this._middle]){
+      return [this._middle];
+    }else {
+      return [this._head, this._middle, this._tail];
+    }
+  }
 
-  get pointerMiddle(): number {return this._pointerMiddle;}
-  set pointerMiddle(value: number) {this._pointerMiddle = value;}
+  pointer(stepCount:number):number[] {
 
-  get pointerTail(): number {return this._pointerTail;}
-  set pointerTail(value: number) {this._pointerTail = value;}
+    //TODO: maybe can be deleted
+    this._stepCount = stepCount;
+
+    if(stepCount === 0){
+      this._head = 0;
+      this._tail =  this._element.length - 1;
+    }
+
+    if(stepCount > 0){
+
+      if(this._element [this._middle] > this._target){
+        this._tail = this._middle - 1;
+      }
+
+      if(this._element [this._middle]  < this._target){
+        this._head = this._middle + 1;
+      }
+
+    }
+
+    this._middle = this.calculateMiddle(this._head,this._tail);
+
+    this._binarySearchDisplay.printPointers(this._head,this._middle,this._tail,this._element);
+
+    return this.checkMiddle();
+
+
+  }
+
+  get head(): number {return this._head;}
+  set head(value: number) {this._head = value;}
+
+  get middle(): number {return this._middle;}
+  set middle(value: number) {this._middle = value;}
+
+  get tail(): number {return this._tail;}
+  set tail(value: number) {this._tail = value;}
+
+  get element(): number[] {return this._element;}
+  set element(value: number[]) {this._element = value;}
+
+  get target(): number {return this._target;}
+  set target(value: number) {this._target = value;}
+
+  get stepCount(): number|undefined {return this._stepCount;}
+  set stepCount(value: number|undefined) {this._stepCount = value;}
 }
