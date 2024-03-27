@@ -1,3 +1,5 @@
+import { BinarySearchDisplay } from "../displays/binary.search.display";
+
 export class BinarySearch {
   //POINTERS
   private _head:number = 0;
@@ -6,6 +8,8 @@ export class BinarySearch {
 
   private _element:number[];
   private _target:number;
+
+  private _binarySearchDisplay:BinarySearchDisplay = new BinarySearchDisplay();
 
   private _stepCount?:number;
 
@@ -19,6 +23,10 @@ export class BinarySearch {
   }
 
   checkMiddle():number[]{
+
+    if(this._target !== this._element[this._middle] && this._head === this._tail){
+      return [];
+    }
     if(this._target === this._element[this._middle]){
       return [this._middle];
     }else {
@@ -35,12 +43,11 @@ export class BinarySearch {
       this._head = 0;
       this._tail =  this._element.length - 1;
     }
-    this._middle = this.calculateMiddle(this._head,this._tail);
 
     if(stepCount > 0){
 
       if(this._element [this._middle] > this._target){
-        this._head = this._middle - 1;
+        this._tail = this._middle - 1;
       }
 
       if(this._element [this._middle]  < this._target){
@@ -48,6 +55,10 @@ export class BinarySearch {
       }
 
     }
+
+    this._middle = this.calculateMiddle(this._head,this._tail);
+
+    this._binarySearchDisplay.printPointers(this._head,this._middle,this._tail,this._element);
 
     return this.checkMiddle();
 

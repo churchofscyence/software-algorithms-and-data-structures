@@ -7,7 +7,7 @@
   <div class="center below-spacer">
     <mat-toolbar color="primary">
 
-      <button mat-button [matMenuTriggerFor]="belowMenu">Search</button>
+      <button mat-button [matMenuTriggerFor]="belowMenu" (click)="onClear()">Search</button>
       <mat-menu #belowMenu="matMenu" yPosition="below">
         <button mat-menu-item (click)="onNavigate( Algorithm.SEARCH_BINARY_POINT )" > {{ Algorithm.SEARCH_BINARY_POINT }} </button>
       </mat-menu>
@@ -52,7 +52,7 @@
 
   <footer class="footer">
     <div class="container">
-      <span>Place sticky footer content here.</span>
+      <span>Church of Scyence &copy;</span>
     </div>
   </footer>
 

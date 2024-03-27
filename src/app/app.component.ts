@@ -37,7 +37,7 @@ export class AppComponent {
   messageType:string = "";
 
   algorithmData! : AlgorithmData;
-  binarySearch! : BinarySearch;
+  binarySearch! : BinarySearch | null;
 
   /** Template reference to the canvas element */
   @ViewChild('canvasEl') canvasEl!: ElementRef;
@@ -132,6 +132,8 @@ export class AppComponent {
     this.targetValue = "";
     this.currentAlgorithm = "Algorithm";
     this.numNext  = 0;
+
+    this.binarySearch = null;
   };
 
   onNavigate( item: string){
@@ -153,18 +155,25 @@ export class AppComponent {
 
     this.clear();
 
-    this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
-
     if( !this.onMessage() ){
       this.initializeCanvas();
+
+      if(this.binarySearch == null){
+        this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
+      }
 
       switch(this.currentAlgorithm){
         case AlgorithmEnum.SEARCH_BINARY_POINT:
 
-          let result = this.binarySearch.pointer(this.numNext)
-          if(result.length == 1 ){
+          let result = this.binarySearch.pointer(this.numNext);
+
+          if(result.length == 0 ){
+            this.messageType = 'alert alert-success';
+            this.message = "Target Value was not found";
+          } else if (result.length == 1 ){
             this.messageType = 'alert alert-success';
             this.message = "Target Value found at index " + result[0];
+            this.graphModel.drawManyHorizontalPointer( result, ["Middle"],[0]);
           }else{
             this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
           }
