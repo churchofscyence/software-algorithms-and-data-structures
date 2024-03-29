@@ -5,6 +5,8 @@ import {InitializeEnum} from './enumerates/initialize.enum';
 import {GraphModel} from './models/graph.model';
 import { AlgorithmService } from './services/algorithm.service';
 
+import { UtilService } from './services/util.service';
+
 import { BinarySearch } from './searches/binary.search';
 
 type AlgorithmData = {
@@ -49,6 +51,7 @@ export class AppComponent {
 
   Algorithm = AlgorithmEnum;
   algorithmService : AlgorithmService = new AlgorithmService();
+  utilService: UtilService = new UtilService();
 
   /*
    * Each time the Next Button is clicked, this number is incremented
@@ -92,29 +95,7 @@ export class AppComponent {
     }
   };
 
-  convertToNumberArray(value:any){
 
-    if(typeof value == "string"){
-
-      const regex = /^\d+(,\d+)*$/;
-      if(regex.test(value) ){
-
-        let array = value.split(",");
-        let numberArray:number[] = [];
-
-        for(let i = 0; i < array.length; i++){
-          numberArray.push(parseInt(array[i]));
-        }
-
-        return numberArray;
-      }
-
-    }else{
-      return [];
-    }
-    return [];
-
-  };
 
   clear(){
     if(this.context != null && this.canvas != null){
@@ -178,6 +159,12 @@ export class AppComponent {
             this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
           }
           break;
+
+        case AlgorithmEnum.SORT_BUBBLE:
+
+          break;
+
+
         default:
         // code block
       }
@@ -193,7 +180,7 @@ export class AppComponent {
     let isError = false;
     const regex = /^-?\d+$/;
 
-    let checkArrayList = this.convertToNumberArray(this.arrayList);
+    let checkArrayList =  this.utilService.convertToNumberArray(this.arrayList);
 
     if( ! regex.test( this.targetValue) ){
       this.messageType = 'alert alert-danger';

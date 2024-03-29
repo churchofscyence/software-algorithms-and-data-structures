@@ -39,7 +39,7 @@ also more appropriate
 There is no one solution that works every single time. It is always good to know multiple ways to solve the problem and use the best solution, given your constraints
 
 If you have little memory to work with, you should pick a solution that is relatively slower but needs less
-spcae
+space
 
 # Time & Space Complexity
 
@@ -116,7 +116,7 @@ This is O(n) - Linear  Time Completity
 
    ```
 
-Line 1 only excutes one time so this is O(1) Constant Time Completity
+Line 1 only executes one time so this is O(1) Constant Time Completity
 
 ## Example Quadratic Time Completity
 
@@ -237,25 +237,27 @@ F2 = F1 + F0
 * You should implement the solution together
 * Video narrator will determine the Big-O time complexity of the solution*
 
-## Linear Search Pseudocode
+## Linear Search
+
+### Linear Search Pseudocode
 * Start at the first element in the array and move towards the last
 * At each element though, check if the element is equal to the target element
 *  if element found, return index of the element
 *  if element not found, return -1
 
-## Linear Search Big-O
+### Linear Search Big-O
 * loop - O(n)
 
-# BinarySearch Search
-BinarySearch Search is defined as a searching algorithm used in a **sorted array** by repeatedly dividing the search interval in half. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(log N).
+## Binary Search
+Binary Search is defined as a searching algorithm used in a **sorted array** by repeatedly dividing the search interval in half. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(log N).
 
-## Conditions for when to apply BinarySearch Search in a Data Structure:
-To apply BinarySearch Search algorithm:
+### Conditions for when to apply Binary Search in a Data Structure:
+To apply Binary Search algorithm:
 
 The data structure must be sorted.
 Access to any element of the data structure takes constant time.
 
-## BinarySearch Search AlgorithmEnum:
+### Binary Search AlgorithmEnum:
 In this algorithm,
 
 Divide the search space into two halves by finding the middle index “mid”.
@@ -270,11 +272,19 @@ Divide the search space into two halves by finding the middle index “mid”.
   - If the key is larger than the middle element, then the right side is used for next search.
 * This process is continued until the key is found or the total search space is exhausted.
 
-
-
-
-
 # Sort
+* Bubble sort
+* Insertion sort
+* Quick sort
+* Merge sort
+
+## The approach
+* Video narrator will provide problem statement
+* You should pause the video and try solving the problem
+* You should implement the solution together
+* Video narrator will determine the Big-O time complexity of the solution
+
+## Bubble Sort     
 
 
 

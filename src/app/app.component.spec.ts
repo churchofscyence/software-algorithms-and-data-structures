@@ -18,9 +18,6 @@ describe('AppComponent', () => {
 
   let compiled:any;
 
-  let value;
-  let expected;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
@@ -58,38 +55,5 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('.title')?.textContent).toContain('Data Structures and Algorithms');
   });
 
-  it('should convert a string of comma-separated numbers into an array of numbers when given a valid input', () => {
-    // Arrange
-    value = "1,2,3,4,5";
-    expected = [1, 2, 3, 4, 5];
-
-    // Act
-    const result = app.convertToNumberArray(value);
-
-    // Assert
-    expect(result).toEqual(expected);
-  });
-
-  it('should return an empty array when given a non-string input', () => {
-    // Arrange
-    value = 123;
-
-    // Act
-    const result = app.convertToNumberArray(value);
-
-    // Assert
-    expect(result).toEqual([]);
-  });
-
-  it('should return an empty array when given a value missing a trailing digit', () => {
-    // Arrange
-    value = '12,';
-
-    // Act
-    const result = app.convertToNumberArray(value);
-
-    // Assert
-    expect(result).toEqual([]);
-  });
 
 });
