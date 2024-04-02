@@ -161,25 +161,25 @@ export class AppComponent {
       switch(this.currentAlgorithm){
         case AlgorithmEnum.SEARCH_BINARY_POINT:
 
-          this.initializeCanvas();
-          if(this.binarySearch == null){
-            this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
-          }
+            this.initializeCanvas();
+            if(this.binarySearch == null){
+              this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
+            }
 
-          let result = this.binarySearch.pointer(this.numNext);
+            let result = this.binarySearch.pointer(this.numNext);
 
-          if(result.length == 0 ){
-            this.messageType = 'alert alert-success';
-            this.message = "Target Value was not found";
-          } else if (result.length == 1 ){
-            this.messageType = 'alert alert-success';
-            this.message = "Target Value found at index " + result[0];
-            this.graphModel.drawManyHorizontalPointer( result, ["Middle"],[0]);
-          }else{
-            this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
-          }
+            if(result.length == 0 ){
+              this.messageType = 'alert alert-success';
+              this.message = "Target Value was not found";
+            } else if (result.length == 1 ){
+              this.messageType = 'alert alert-success';
+              this.message = "Target Value found at index " + result[0];
+              this.graphModel.drawManyHorizontalPointer( result, ["Middle"],[0]);
+            }else{
+              this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
+            }
 
-          this.numNext++;
+            this.numNext++;
           break;
 
         case AlgorithmEnum.SORT_BUBBLE:
