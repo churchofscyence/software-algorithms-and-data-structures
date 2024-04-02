@@ -31,10 +31,13 @@
       <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}" (focusout)="arrayListFocusout()">
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Target Value</mat-label>
-      <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}" (focusout)="targetValueFocusout()">
-    </mat-form-field>
+    <div *ngIf="showTargetValue">
+      <mat-form-field class="full-width">
+        <mat-label>Target Value</mat-label>
+        <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}" (focusout)="targetValueFocusout()">
+      </mat-form-field>
+    </div>
+
   </form>
 
   <div [ngClass]="messageType" role="alert">

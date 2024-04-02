@@ -8,6 +8,7 @@ import { AlgorithmService } from './services/algorithm.service';
 import { UtilService } from './services/util.service';
 
 import { BinarySearch } from './searches/binary.search';
+import { BubbleSort } from './sorts/bubble.sort';
 
 type AlgorithmData = {
   element: number[],
@@ -40,6 +41,7 @@ export class AppComponent {
 
   algorithmData! : AlgorithmData;
   binarySearch! : BinarySearch | null;
+  bubbleSort! : BubbleSort | null;
 
   /** Template reference to the canvas element */
   @ViewChild('canvasEl') canvasEl!: ElementRef;
@@ -58,6 +60,8 @@ export class AppComponent {
    */
   numNext:number = 0;
 
+  showTargetValue:boolean = false;
+
   constructor () {
   }
 
@@ -69,34 +73,41 @@ export class AppComponent {
   initializeCanvas(){
 
     this.arrayList = this.algorithmData.element.join();
-    this.targetValue = this.algorithmData.target.toString();
-
-    //Switch statement to determine what to initialize on the canvas
-    for(const[index,element] of this.algorithmData.setupType.entries()){
-      console.log("[" + index + "] " + element);
-      switch(element){
-        case InitializeEnum.MANY_HORIZONTAL_RECTANGLE:
-
-          //drawManyHorizontalRec(50, 50, [9, 8, 2, 4, 1], 100, 100, "red");
-          this.graphModel.drawManyHorizontalRec(
-                this.algorithmData.setupValues[index].x,
-                this.algorithmData.setupValues[index].y,
-                this.algorithmData.element,
-                this.algorithmData.setupValues[index].width,
-                this.algorithmData.setupValues[index].height,
-                this.algorithmData.setupValues[index].color
-          );
-
-          break;
-        default:
-        // code block
-      }
+    if(this.targetValue != "" ){
+      this.targetValue = this.algorithmData.target.toString();
 
     }
+    this.drawManyHorizontalRec(this.algorithmData.element)
+
   };
 
+  drawManyHorizontalRec(elementList: number[]) {
+  //Switch statement to determine what to initialize on the canvas
+  for(const[index,elementSwitch] of this.algorithmData.setupType.entries()){
+    console.log("[" + index + "] " + elementSwitch);
+    switch(elementSwitch) {
+      case InitializeEnum.MANY_HORIZONTAL_RECTANGLE:
+
+        //drawManyHorizontalRec(50, 50, [9, 8, 2, 4, 1], 100, 100, "red");
+        this.graphModel.drawManyHorizontalRec(
+          this.algorithmData.setupValues[index].x,
+          this.algorithmData.setupValues[index].y,
+          elementList,
+          this.algorithmData.setupValues[index].width,
+          this.algorithmData.setupValues[index].height,
+          this.algorithmData.setupValues[index].color
+        );
+
+        break;
+      default:
+      // code block
+    }
+    }
+  }
 
 
+
+  //Clear the canvass
   clear(){
     if(this.context != null && this.canvas != null){
       this.context.fillStyle = "white";
@@ -105,6 +116,7 @@ export class AppComponent {
     }
   }
 
+  //Clear the form and resets all values
   onClear(){
     this.clear();
     this.messageType = "";
@@ -115,6 +127,7 @@ export class AppComponent {
     this.numNext  = 0;
 
     this.binarySearch = null;
+    this.bubbleSort = null;
   };
 
   onNavigate( item: string){
@@ -122,11 +135,18 @@ export class AppComponent {
     this.currentAlgorithm = item;
 
     this.algorithmData = this.algorithmService.get(item);
+
+    if(this.algorithmData.target != null){
+        this.showTargetValue = true;
+    }else{
+        this.showTargetValue = false;
+    }
+
     console.log( JSON.stringify ( this.algorithmData ) );
 
     this.graphModel = new GraphModel(item, this.canvas, this.context);
 
-    this.initializeCanvas()
+    this.initializeCanvas();
 
   };
 
@@ -137,14 +157,14 @@ export class AppComponent {
     this.clear();
 
     if( !this.onMessage() ){
-      this.initializeCanvas();
-
-      if(this.binarySearch == null){
-        this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
-      }
 
       switch(this.currentAlgorithm){
         case AlgorithmEnum.SEARCH_BINARY_POINT:
+
+          this.initializeCanvas();
+          if(this.binarySearch == null){
+            this.binarySearch = new BinarySearch(this.algorithmData.element, this.algorithmData.target);
+          }
 
           let result = this.binarySearch.pointer(this.numNext);
 
@@ -158,9 +178,26 @@ export class AppComponent {
           }else{
             this.graphModel.drawManyHorizontalPointer( result, ["Header", "Middle","Tail"],[0,150,300]);
           }
+
+          this.numNext++;
           break;
 
         case AlgorithmEnum.SORT_BUBBLE:
+
+            if(this.bubbleSort == null){
+              this.bubbleSort = new BubbleSort(this.algorithmData.element);
+            }
+            this.clear();
+            if(this.bubbleSort.indexes.length > this.numNext){
+              this.bubbleSort.modifiedAscendingOrder(this.numNext);
+              this.drawManyHorizontalRec(this.bubbleSort.element);
+              let resultIndexes = [this.bubbleSort.indexes[this.numNext].main, this.bubbleSort.indexes[this.numNext].offset];
+              this.graphModel.drawManyHorizontalPointer( resultIndexes, ["Main", "Offset"],[0,150]);
+              this.numNext++;
+            }else{
+              this.messageType = 'alert alert-success';
+              this.message = "The Bubble Sort is complete";
+            }
 
           break;
 
@@ -170,7 +207,7 @@ export class AppComponent {
       }
     }
 
-    this.numNext++;
+
 
   };
 
@@ -182,13 +219,16 @@ export class AppComponent {
 
     let checkArrayList =  this.utilService.convertToNumberArray(this.arrayList);
 
-    if( ! regex.test( this.targetValue) ){
-      this.messageType = 'alert alert-danger';
-      this.message = "Target Value must be a integer";
-      isError = true;
-    }else{
-      this.algorithmData.target = parseInt(this.targetValue);
+    if(this.showTargetValue){
+      if( ! regex.test( this.targetValue) ){
+        this.messageType = 'alert alert-danger';
+        this.message = "Target Value must be a integer";
+        isError = true;
+      }else{
+        this.algorithmData.target = parseInt(this.targetValue);
+      }
     }
+
     if(checkArrayList.length == 0){
       this.messageType = 'alert alert-danger';
       this.message = "Array List must be a numbers separated by commas";
@@ -199,7 +239,12 @@ export class AppComponent {
 
     if(!isError){
       this.messageType = 'alert alert-success';
-      this.message = "Array List and Target Value are valid";
+
+      if(this.showTargetValue){
+        this.message = "Array List and Target Value are valid";
+      }else {
+        this.message = "Array List are valid";
+      }
     }
 
     return isError;
