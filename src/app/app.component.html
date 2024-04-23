@@ -7,13 +7,19 @@
   <div class="center below-spacer">
     <mat-toolbar color="primary">
 
-      <button mat-button [matMenuTriggerFor]="belowMenu" (click)="onClear()">Search</button>
-      <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-button [matMenuTriggerFor]="searchMenu" (click)="onClear()">Search</button>
+      <mat-menu #searchMenu="matMenu" yPosition="below">
         <button mat-menu-item (click)="onNavigate( Algorithm.SEARCH_BINARY_POINT )" > {{ Algorithm.SEARCH_BINARY_POINT }} </button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="sortMenu" (click)="onClear()">Sort</button>
+      <mat-menu #sortMenu="matMenu" yPosition="below">
+        <button mat-menu-item (click)="onNavigate( Algorithm.SORT_BUBBLE )" > {{ Algorithm.SORT_BUBBLE }} </button>
       </mat-menu>
 
     </mat-toolbar>
   </div>
+
   <p class="title" >{{ currentAlgorithm }}</p>
   <div>
 
@@ -25,10 +31,13 @@
       <input  matInput [(ngModel)]="arrayList" [ngModelOptions]="{standalone: true}" (focusout)="arrayListFocusout()">
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <mat-label>Target Value</mat-label>
-      <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}" (focusout)="targetValueFocusout()">
-    </mat-form-field>
+    <div *ngIf="showTargetValue">
+      <mat-form-field class="full-width">
+        <mat-label>Target Value</mat-label>
+        <input  matInput [(ngModel)]="targetValue" [ngModelOptions]="{standalone: true}" (focusout)="targetValueFocusout()">
+      </mat-form-field>
+    </div>
+
   </form>
 
   <div [ngClass]="messageType" role="alert">

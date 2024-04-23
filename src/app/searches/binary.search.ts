@@ -58,7 +58,7 @@ export class BinarySearch {
 
     this._middle = this.calculateMiddle(this._head,this._tail);
 
-    this._binarySearchDisplay.printPointers(this._head,this._middle,this._tail,this._element);
+    //this._binarySearchDisplay.printPointers(this._head,this._middle,this._tail,this._element);
 
     return this.checkMiddle();
 

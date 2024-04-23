@@ -23,6 +23,17 @@ export class AlgorithmService {
         color: 'red',
       }]
     });
+    this._context.set(AlgorithmEnum.SORT_BUBBLE, {
+      element: [60,50,40,30,20,10,0],
+      setupType:[InitializeEnum.MANY_HORIZONTAL_RECTANGLE],
+      setupValues:[{
+        x: 50,
+        y: 50,
+        width: 100,
+        height: 100,
+        color: 'red',
+      }]
+    });
   }
 
   public get(key: string): any {

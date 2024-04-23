@@ -39,7 +39,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Minimum Number 0)
   it('should be [0, 3, 6], [0, 1, 2], and  [0] for looking 0', () => {
 
-    console.log("Boundary Condition (Minimum Number 0)");
+    //console.log("Boundary Condition (Minimum Number 0)");
     let resultStep0 = binaryMin0.pointer(0);
 
     expect(resultStep0).toEqual([0,3,6]);
@@ -57,7 +57,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Small Number 20)
   it('should be [0, 3, 6], [0, 1, 2], and  [2] for looking 20', () => {
 
-    console.log("Boundary Condition  (Small Number 20)");
+    //console.log("Boundary Condition  (Small Number 20)");
     let resultStep0 = binarySmall20.pointer(0);
 
     expect(resultStep0).toEqual([0,3,6]);
@@ -75,7 +75,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Middle Number 30)
   it('should be  [3] for looking 30', () => {
 
-    console.log("Boundary Condition  (Middle Number 30)");
+    //console.log("Boundary Condition  (Middle Number 30)");
     let resultStep0 = binaryMiddle30.pointer(0);
 
     expect(resultStep0).toEqual([3]);
@@ -86,7 +86,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Larger Number 50)
   it('should be [0, 3, 6] and  [5] for looking 50', () => {
 
-    console.log("Boundary Condition  (Larger Number 50)");
+    //console.log("Boundary Condition  (Larger Number 50)");
     let resultStep0 = binaryLarger50.pointer(0);
 
     expect(resultStep0).toEqual([0,3,6]);
@@ -101,7 +101,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Maximum Number 60)
   it('should be [0, 3, 6], [4,5,6], and  [6] for looking 60', () => {
 
-    console.log("Boundary Condition  (Maximum Number 60)");
+    //console.log("Boundary Condition  (Maximum Number 60)");
     let resultStep0 = binaryMax60.pointer(0);
 
     expect(resultStep0).toEqual([0,3,6]);
@@ -120,7 +120,7 @@ describe('BinarySearch', () => {
   //Boundary Condition (Not in Array 70)
   it('should be [0, 3, 6], [4,5,6], and  [] for looking 70', () => {
 
-    console.log("Boundary Condition  (Maximum Number 60)");
+    //console.log("Boundary Condition  (Maximum Number 60)");
     let resultStep0 = binaryNotInArray70.pointer(0);
 
     expect(resultStep0).toEqual([0,3,6]);
